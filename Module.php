@@ -1,6 +1,6 @@
 <?php
 
-namespace thyseus\favorites;
+namespace faro\core\favorites;
 
 use Yii;
 use yii\i18n\PhpMessageSource;
