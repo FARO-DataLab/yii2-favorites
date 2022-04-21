@@ -26,6 +26,7 @@ class m161115_084412_init_favorites extends Migration
             'target_attribute'     => Schema::TYPE_TEXT,
             'route'                => Schema::TYPE_TEXT,
             'url'                  => Schema::TYPE_TEXT,
+            'icon'                 => Schema::TYPE_STRING,
         ], $tableOptions);
     }
 
