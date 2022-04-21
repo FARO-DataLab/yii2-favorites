@@ -66,7 +66,7 @@ $necessaryOptions = [
 if (!isset($htmlOptions)) {
     $htmlOptions = $necessaryOptions;
 } else {
-    $htmlOptions = array_merge($htmlOptions, $necessaryOptions);
+    $htmlOptions = array_merge($necessaryOptions, $htmlOptions);
 }
 
 if ($favorite = Favorite::exists($model, $owner, $target)) {
