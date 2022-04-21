@@ -1,12 +1,13 @@
 <?php
 
-namespace thyseus\favorites\models;
+namespace faro\core\favorites\models;
 
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\helpers\Html;
 
 /**
@@ -26,17 +27,19 @@ class Favorite extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'favorites';
+        return '{{%core_favorito}}';
     }
 
     public function behaviors()
     {
         return [
-            BlameableBehavior::className(),
+            BlameableBehavior::class,
             [
-                'class' => TimestampBehavior::className(),
-                'value' => date('Y-m-d G:i:s'),
-            ]
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'fecha_ingreso_sistema',
+                'updatedAtAttribute' => 'fecha_actualizacion_sistema',
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
 
@@ -63,8 +66,8 @@ class Favorite extends ActiveRecord
             'id' => Yii::t('favorites', '#'),
             'created_by' => Yii::t('favorites', 'created by'),
             'updated_by' => Yii::t('favorites', 'updated by'),
-            'created_at' => Yii::t('favorites', 'created at'),
-            'updated_at' => Yii::t('favorites', 'updated at'),
+            'fecha_ingreso_sistema' => Yii::t('favorites', 'created at'),
+            'fecha_actualizacion_sistema' => Yii::t('favorites', 'updated at'),
             'model' => Yii::t('favorites', 'type'),
             'target_id' => Yii::t('favorites', 'Target'),
             'url' => Yii::t('favorites', 'url'),

@@ -1,6 +1,6 @@
 <?php
 
-use thyseus\favorites\models\Favorite;
+use faro\core\favorites\models\Favorite;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;

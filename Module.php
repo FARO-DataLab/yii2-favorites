@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'thyseus\favorites\controllers';
+    public $controllerNamespace = 'faro\core\favorites\controllers';
 
     public $defaultRoute = 'favorites\favorites\index';
 

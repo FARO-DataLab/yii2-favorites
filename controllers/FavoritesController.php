@@ -1,9 +1,9 @@
 <?php
 
-namespace thyseus\favorites\controllers;
+namespace faro\core\favorites\controllers;
 
-use thyseus\favorites\models\Favorite;
-use thyseus\favorites\models\FavoriteSearch;
+use faro\core\favorites\models\Favorite;
+use faro\core\favorites\models\FavoriteSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
