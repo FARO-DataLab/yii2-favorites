@@ -1,6 +1,6 @@
 <?php
 
-use thyseus\favorites\models\Favorite;
+use faro\core\favorites\models\Favorite;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -53,6 +53,10 @@ if (!isset($icon_remove)) {
     $icon_remove = Yii::$app->getModule('favorites')->icon_inactive;
 }
 
+if (!isset($mostrarBotonSoloFav)) {
+    $mostrarBotonSoloFav = false;
+}
+
 $necessaryOptions = [
     'class' => 'favorite-button',
     'data-model' => $model,
@@ -60,7 +64,7 @@ $necessaryOptions = [
     'data-url' => $url,
     'data-target_attribute' => $target_attribute,
     'data-pjax' => 0,
-    'style' => 'cursor: pointer;',
+    'style' => 'cursor: pointer; color: orange;',
 ];
 
 if (!isset($htmlOptions)) {
@@ -76,11 +80,13 @@ if ($favorite = Favorite::exists($model, $owner, $target)) {
         $icon_remove,
         $label_remove), null, array_merge($htmlOptions, ['data-status' => 'active', 'data-id' => $favorite->id]));
 } else {
-    echo Html::a(sprintf('<span data-toggle="popover" title="%s" data-content="%s">%s%s',
-        $label_tooltip_title_add,
-        $label_tooltip_content_add,
-        $icon_add,
-        $label_add), null, array_merge($htmlOptions, ['data-status' => 'inactive']));
+    if (!$mostrarBotonSoloFav) {
+        echo Html::a(sprintf('<span data-toggle="popover" title="%s" data-content="%s">%s%s',
+            $label_tooltip_title_add,
+            $label_tooltip_content_add,
+            $icon_add,
+            $label_add), null, array_merge($htmlOptions, ['data-status' => 'inactive']));
+    }
 }
 
 $url_create = Url::to(['/favorites/favorites/create']);

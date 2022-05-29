@@ -1,5 +1,6 @@
 <?php
 
+use faro\core\components\FaroGridView;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -8,23 +9,16 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\SitecontentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('favorites', 'Favorites');
+$this->title = Yii::t('favorites', 'Favoritos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="favorites-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= GridView::widget([
+    <?= FaroGridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => null,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            [
-                'attribute' => 'created_at',
-                'filter' => false,
-                'format' => 'datetime',
-            ],
             [
                 'filter' => false,
                 'format' => 'html',
@@ -37,40 +31,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'filter' => $model_types,
-                'format' => 'raw',
-                'attribute' => 'model',
-                'value' => function ($data) {
-                    if ($data->model) {
-                        $aliases = Yii::$app->getModule('favorites')->modelAliases;
-
-                        return isset($aliases[$data->model]) ? Yii::t('app', $aliases[$data->model]) : $data->model;
-                    }
-                }
-            ],
-            [
                 'filter' => false,
                 'format' => 'raw',
                 'attribute' => 'target_id',
                 'value' => function ($data) {
                     if ($data->target) {
-                        return Html::a($data->targetTitle(), $data->url, ['data-pjax' => 0]);
+                        return Html::a($data->target->nombre, $data->url, ['data-pjax' => 0]);
                     }
                 }
             ],
             [
+                'filter' => $model_types,
                 'format' => 'raw',
-                'attribute' => 'url',
+                'attribute' => 'model',
+                "header" => "Tipo",
                 'value' => function ($data) {
-                    return Html::a($data->url, $data->url, ['data-pjax' => 0]);
+                    if ($data->model) {
+                        $aliases = Yii::$app->getModule('favorites')->modelAliases;
+
+                        return isset($aliases[$data->model]) ? Yii::t('app',
+                            $aliases[$data->model]) : $data->model;
+                    }
                 }
             ],
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{delete}',
-                'urlCreator' => function ($action, $model, $key, $index) {
-                    return Url::to(['favorites/' . $action, 'id' => $model->id]);
-                }
+                'attribute' => 'fecha_ingreso_sistema',
+                'filter' => false,
+                'format' => 'relativeTime',
             ],
         ],
     ]); ?>

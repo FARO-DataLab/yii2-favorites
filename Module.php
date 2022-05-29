@@ -1,6 +1,6 @@
 <?php
 
-namespace thyseus\favorites;
+namespace faro\core\favorites;
 
 use Yii;
 use yii\i18n\PhpMessageSource;
@@ -18,7 +18,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'thyseus\favorites\controllers';
+    public $controllerNamespace = 'faro\core\favorites\controllers';
 
     public $defaultRoute = 'favorites\favorites\index';
 
