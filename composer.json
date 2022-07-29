@@ -1,32 +1,29 @@
 {
-  "name": "faro/yii2-favorites",
-  "description": "Fork de Yii2 Favorite para FARO",
-  "keywords": [
-    "yii2",
-    "yii2-favorites"
-  ],
-  "type": "yii2-extension",
-  "license": "GPL-2.0-only",
-  "support": {
-    "issues": "https://github.com/thyseus/yii2-favorites/issues?state=open",
-    "forum": "https://gitter.im/thyseus/yii2-favorites",
-    "source": "https://github.com/thyseus/yii2-favorites"
-  },
-  "authors": [
-    {
-      "name": "Herbert Maschke",
-      "email": "thyseus@gmail.com",
-      "homepage": "https://github.com/thyseus/yii2-favorites"
+    "name": "faro/yii2-favorites",
+    "description": "Fork de Yii2 Favorite para FARO",
+    "keywords": ["yii2", "yii2-favorites"],
+    "type": "yii2-extension",
+    "license": "GPL-2.0-only",
+    "support": {
+        "issues": "https://github.com/thyseus/yii2-favorites/issues?state=open",
+        "forum": "https://gitter.im/thyseus/yii2-favorites",
+        "source": "https://github.com/thyseus/yii2-favorites"
+    },
+    "authors": [
+        {
+            "name": "Herbert Maschke",
+            "email": "thyseus@gmail.com",
+            "homepage": "https://github.com/thyseus/yii2-favorites"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.45",
+        "yiisoft/yii2-bootstrap": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "faro\\core\\favorites\\": ""
+        }
     }
-  ],
-  "minimum-stability": "stable",
-  "require": {
-    "yiisoft/yii2": "~2.0.45",
-    "yiisoft/yii2-bootstrap": "~2.0.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "faro\\core\\favorites\\": ""
-    }
-  }
 }
