@@ -23,7 +23,7 @@ class ProcesarQueryFavoritos extends Component
      */
     public static function agregarFavoritosAQuery(ActiveQuery $query, string $clase, string $campoRelacion)
     {
-        $orden = $query->orderBy;
+        $orden = $query->orderBy ?? [];
         $nuevoOrden = ["favorito" => SORT_DESC];
         $orden = array_merge($nuevoOrden, $orden);
         
