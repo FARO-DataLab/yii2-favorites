@@ -17,22 +17,22 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="favorites-index">
 
-    <?php Panel::begin(["header" => false]) ?>
+    <?php Panel::begin(['header' => false]) ?>
 
     <?= FaroGridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => null,
-        'layout' => "{items}{pager}",
+        'layout' => '{items}{pager}',
         'columns' => [
             [
                 'filter' => false,
                 'format' => 'raw',
-                'label' => "Categoria",
+                'label' => 'Categoria',
                 'value' => function ($data) {
                     if ($data->target) {
                         $categoria = $data->target->getCategoria()->one();
                         if (!$categoria) {
-                            return "-";
+                            return '-';
                         }
 
                         return HtmlComponentsHelper::imprimirBadgeCategoria(
@@ -47,8 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => $model_types,
                 'format' => 'raw',
                 'attribute' => 'model',
-                "header" => "Tipo",
-                "contentOptions" => ["style" => "max-width: 150px;"],
+                'header' => 'Tipo',
+                'contentOptions' => ['style' => 'max-width: 150px;'],
                 'value' => function ($data) {
                     if ($data->model) {
                         $aliases = Yii::$app->getModule('favorites')->modelAliases;
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => false,
                 'format' => 'raw',
                 'attribute' => 'target_id',
-                'label' => "Objeto",
+                'label' => 'Objeto',
                 'value' => function ($data) {
                     if ($data->target) {
                         return Html::a($data->target->nombre, $data->url, ['data-pjax' => 0]);

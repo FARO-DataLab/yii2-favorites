@@ -62,7 +62,7 @@ $necessaryOptions = [
     'data-model' => $model,
     'data-target-id' => $target,
     'data-url' => $url,
-    'data-target_attribute' => $target_attribute,
+    'data-target-attribute' => $target_attribute,
     'data-pjax' => 0,
     'style' => 'cursor: pointer; color: orange;',
 ];

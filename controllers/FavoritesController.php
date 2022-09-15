@@ -130,7 +130,7 @@ class FavoritesController extends Controller
         $icon = $post['icon'] ?? null;
 
         $url = $_POST['url'] ?? $this->generateUrl($model, $target_id);
-        $target_attribute = $_POST['target_attribute'] ?? $this->guessTargetAttribute(new $model);
+        $target_attribute = $_POST['target-attribute'] ?? $this->guessTargetAttribute(new $model);
 
         $favorite = Yii::createObject([
             'class' => Favorite::className(),
