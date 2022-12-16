@@ -12,7 +12,7 @@ use yii\helpers\VarDumper;
 /* @var $searchModel app\models\SitecontentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('favorites', 'Favoritos');
+$this->title = t('core', 'Favoritos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="favorites-index">
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'filter' => false,
                 'format' => 'raw',
-                'label' => 'Categoria',
+                'label' => t('core', 'Categoría'),
                 'value' => function ($data) {
                     if ($data->target) {
                         $categoria = $data->target->getCategoria()->one();
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => $model_types,
                 'format' => 'raw',
                 'attribute' => 'model',
-                'header' => 'Tipo',
+                'header' => t('core', 'Tipo'),
                 'contentOptions' => ['style' => 'max-width: 150px;'],
                 'value' => function ($data) {
                     if ($data->model) {
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => false,
                 'format' => 'raw',
                 'attribute' => 'target_id',
-                'label' => 'Objeto',
+                'label' => t('core', 'Objeto'),
                 'value' => function ($data) {
                     if ($data->target) {
                         return Html::a($data->target->nombre, $data->url, ['data-pjax' => 0]);
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'fecha_ingreso_sistema',
                 'filter' => false,
-                'label' => 'Creado',
+                'label' => t('core', 'Fecha creación'),
                 'format' => 'relativeTime',
             ],
         ],
